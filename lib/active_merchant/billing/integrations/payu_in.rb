@@ -5,10 +5,10 @@ module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     module Integrations #:nodoc:
       module PayuIn
-        autoload :Return, 'active_merchant/payu_in/return.rb'
-        autoload :Helper, 'active_merchant/payu_in/helper.rb'
-        autoload :Notification, 'active_merchant/payu_in/notification.rb'
-        autoload :WebService, 'active_merchant/payu_in/web_service.rb'
+        autoload :Return, 'active_merchant/billing/integrations/payu_in/return.rb'
+        autoload :Helper, 'active_merchant/billing/integrations/payu_in/helper.rb'
+        autoload :Notification, 'active_merchant/billing/integrations/payu_in/notification.rb'
+        autoload :WebService, 'active_merchant/billing/integrations/payu_in/web_service.rb'
 
         mattr_accessor :merchant_id
         mattr_accessor :secret_key
