@@ -1,4 +1,4 @@
-require 'test/unit'
+require 'test_helper'
 
 class PayuInReturnTest < Test::Unit::TestCase
   include ActiveMerchant::Billing::Integrations
