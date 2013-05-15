@@ -312,7 +312,7 @@ module ActiveMerchant #:nodoc:
             val
           end # }}}
         end
-
+      end
     end
   end
 end
