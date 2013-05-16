@@ -1,5 +1,4 @@
-require 'test/unit'
-require './lib/active_merchant_payu_in'
+require 'test_helper'
 
 class RemotePayuInIntegrationTest < Test::Unit::TestCase
   include ActiveMerchant::Billing::Integrations
@@ -13,7 +12,7 @@ class RemotePayuInIntegrationTest < Test::Unit::TestCase
   end
 
   def test_raw
-  	ActiveMerchant::Billing::Base.integration_mode = :test
+    ActiveMerchant::Billing::Base.integration_mode = :test
     assert_equal "https://test.payu.in/_payment.php", PayuIn.service_url
 
     ActiveMerchant::Billing::Base.integration_mode = :production
