@@ -43,6 +43,11 @@ module ActiveMerchant #:nodoc:
             :var10 => 'udf10'
           }
 
+          def initialize(order, account, options = {})
+            super
+            self.pg = 'CC'
+          end
+
           # Computes the checksum for the form data and add it to the field
           def add_checksum(  options = {} )
             checksum_fields = [ :order, :amount, :credential2, { :customer => [ :first_name, :email ] },
