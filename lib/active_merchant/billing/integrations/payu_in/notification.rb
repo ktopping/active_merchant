@@ -135,6 +135,10 @@ module ActiveMerchant #:nodoc:
             @message || params['error']
           end
 
+          def acknowledge
+            checksum_ok?
+          end
+
           def checksum_ok?
             fields = user_defined.dup.push( customer_email, customer_first_name, product_info, gross, invoice, :reverse => true )
             fields.unshift( transaction_status )

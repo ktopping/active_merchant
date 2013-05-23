@@ -35,13 +35,12 @@ class PayuInNotificationTest < Test::Unit::TestCase
     assert_equal '10.00', @payu.gross
   end
 
-  # Replace with real successful acknowledgement code
   def test_acknowledgement
-    assert @payu.checksum_ok?
+    assert @payu.acknowledge
   end
 
   def test_respond_to_acknowledge
-    assert @payu.respond_to?(:checksum_ok?)
+    assert @payu.respond_to?(:acknowledge)
   end
 
   private
