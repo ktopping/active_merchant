@@ -26,8 +26,7 @@ module ActiveMerchant #:nodoc:
           mapping :mode, 'pg'
 
           mapping :notify_url, 'notify_url'
-          mapping :return_url, :success => 'surl',
-            :failure => 'furl'
+          mapping :return_url, ['surl', 'furl']
           mapping :cancel_return_url, 'curl'
           mapping :checksum, 'hash'
 

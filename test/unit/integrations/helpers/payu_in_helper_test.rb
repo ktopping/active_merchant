@@ -34,10 +34,10 @@ class PayuInHelperTest < Test::Unit::TestCase
   end
 
   def test_return_url_fields
-    @helper.return_url :success => 'some_success_url', :failure => 'some_failure_url'
+    @helper.return_url 'some_return_url'
 
-    assert_equal 'some_success_url', @helper.fields['surl']
-    assert_equal 'some_failure_url', @helper.fields['furl']
+    assert_equal 'some_return_url', @helper.fields['surl']
+    assert_equal 'some_return_url', @helper.fields['furl']
   end
 
   def test_user_defined_fields
