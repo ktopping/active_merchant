@@ -61,11 +61,6 @@ module ActiveMerchant #:nodoc:
           end
         end
 
-        # Query the PayU server using there web services
-        def self.query( command, *args )
-          WebService.send( command, *args )
-        end
-
         def self.return(query_string, options = {})
           Return.new(query_string, options)
         end

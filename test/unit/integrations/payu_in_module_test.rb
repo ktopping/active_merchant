@@ -29,10 +29,6 @@ class PayuInModuleTest < Test::Unit::TestCase
     assert_equal "https://info.payu.in/merchant/postservice.php", PayuIn.web_service_url
   end
 
-  def test_query_method
-    assert_instance_of PayuIn::WebService, PayuIn.query('verify_payment', 'var1=sad8f787sdf')
-  end
-
   def test_return_method
     assert_instance_of PayuIn::Return, PayuIn.return('name=foo', {})
   end

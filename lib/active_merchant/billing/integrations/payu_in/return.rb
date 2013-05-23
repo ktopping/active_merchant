@@ -31,7 +31,7 @@ module ActiveMerchant #:nodoc:
             if @notification.invoice_ok?( order_id ) && @notification.amount_ok?( order_amount )
               @notification.status
             else
-              'mismatch'.freeze
+              'mismatch'
             end
           end
 
@@ -39,10 +39,6 @@ module ActiveMerchant #:nodoc:
           # check order_id and
           def success?( order_id, order_amount )
             status( order_id, order_amount ) == 'success'
-          end
-
-          def cancelled?
-            false
           end
 
           def message

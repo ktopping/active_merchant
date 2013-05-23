@@ -55,17 +55,6 @@ class PayuInHelperTest < Test::Unit::TestCase
     assert_equal 'var_ten', @helper.fields['udf10']
   end
 
-  def test_other_fields
-
-    @helper.mode 'CC'
-    @helper.notify_url 'http://notify.payu.in'
-    @helper.cancel_return_url 'http://cancel_return.payu.in'
-    @helper.checksum 'jk4j5454545j4k'
-
-    fields = @helper.fields.dup
-    assert_equal fields, @helper.fields
-  end
-
   def test_add_checksum_method
 
     options = { :mode => 'CC' }

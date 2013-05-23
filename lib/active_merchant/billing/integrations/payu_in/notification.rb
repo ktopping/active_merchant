@@ -4,7 +4,6 @@ module ActiveMerchant #:nodoc:
       module PayuIn
         class Notification < ActiveMerchant::Billing::Integrations::Notification
 
-          # Was the transaction complete?
           def complete?
             status == "success"
           end
@@ -24,7 +23,7 @@ module ActiveMerchant #:nodoc:
               end
             else
               'tampered'
-            end.freeze
+            end
           end
 
           def invoice_ok?( order_id )
@@ -143,7 +142,7 @@ module ActiveMerchant #:nodoc:
               @message = 'Return checksum not matching the data provided'
               return false
             end
-            return true
+            true
           end
 
         end
