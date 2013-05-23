@@ -34,7 +34,7 @@ class PayuInModuleTest < Test::Unit::TestCase
   end
 
   def test_checksum_method
-    assert payu_load = "4ba4afe87f7e73468f2a|10.00|Product Info|Payu-Admin|test@example.com||||||||||"
+    payu_load = "4ba4afe87f7e73468f2a|10.00|Product Info|Payu-Admin|test@example.com||||||||||"
     assert_equal "cd324f64891b07d95492a2fd80ae469092e302faa3d3df5ba1b829936fd7497b6e89c3e48fd70e2a131cdd4f17d14bc20f292e9408650c085bc3bedb32f44266", PayuIn.checksum(payu_load)
   end
 
