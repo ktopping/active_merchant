@@ -4,8 +4,11 @@ class PayuInReturnTest < Test::Unit::TestCase
   include ActiveMerchant::Billing::Integrations
 
   def setup
-    assert PayuIn.new({:merchant_id => 'C0Dr8m', :secret_key => '3sf0jURk'})
-    @payu = PayuIn::Return.new(http_raw_data_success)
+    @payu = PayuIn::Return.new(http_raw_data_success, :credential1 => 'C0Dr8m', :credential2 => '3sf0jURk')
+  end
+
+  def setup_failed_return
+    @payu = PayuIn::Return.new(http_raw_data_failure, :credential1 => 'C0Dr8m', :credential2 => '3sf0jURk')
   end
 
   def test_success
@@ -14,17 +17,16 @@ class PayuInReturnTest < Test::Unit::TestCase
   end
 
   def test_failure_is_successful
-    @payu = PayuIn::Return.new(http_raw_data_failure)
+    setup_failed_return
     assert_equal 'failure', @payu.status('8ae1034d1abf47fde1cf',BigDecimal.new('10.00'))
   end
 
   def test_treat_initial_failures_as_pending
-    @payu = PayuIn::Return.new(http_raw_data_failure)
+    setup_failed_return
     assert_equal 'failure', @payu.notification.status
   end
 
   def test_return_has_notification
-    @payu = PayuIn::Return.new(http_raw_data_success)
     notification = @payu.notification
 
     assert notification.complete?

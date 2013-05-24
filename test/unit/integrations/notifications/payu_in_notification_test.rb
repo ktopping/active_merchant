@@ -4,8 +4,7 @@ class PayuInNotificationTest < Test::Unit::TestCase
   include ActiveMerchant::Billing::Integrations
 
   def setup
-    assert PayuIn.new({:merchant_id => 'C0Dr8m', :secret_key => '3sf0jURk'})
-    @payu = PayuIn::Notification.new(http_raw_data)
+    @payu = PayuIn::Notification.new(http_raw_data, :credential1 => 'C0Dr8m', :credential2 => '3sf0jURk')
   end
 
   def test_accessors

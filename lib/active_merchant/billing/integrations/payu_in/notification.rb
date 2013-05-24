@@ -4,6 +4,12 @@ module ActiveMerchant #:nodoc:
       module PayuIn
         class Notification < ActiveMerchant::Billing::Integrations::Notification
 
+          def initialize(post, options = {})
+            super(post, options)
+            @merchant_id = options[:credential1]
+            @secret_key = options[:credential2]
+          end
+
           def complete?
             status == "success"
           end
@@ -142,7 +148,7 @@ module ActiveMerchant #:nodoc:
           def checksum_ok?
             fields = user_defined.dup.push( customer_email, customer_first_name, product_info, gross, invoice, :reverse => true )
             fields.unshift( transaction_status )
-            unless PayuIn.checksum( *fields ) == checksum
+            unless PayuIn.checksum(@merchant_id, @secret_key, *fields ) == checksum
               @message = 'Return checksum not matching the data provided'
               return false
             end

@@ -55,13 +55,12 @@ module ActiveMerchant #:nodoc:
               if Hash === field then
                 key = field.keys.first
                 field[key].inject( items ){ |s,x| items.push( form_fields[ mappings[key][x] ] ) }
-                # items.push( form_fields[ field.values.each{ |x| mappings[ key ][ x ] } ] )
               else
                 items.push( form_fields[ mappings[field] ] )
               end
             end
             checksum_payload_items.push( options )
-            checksum = PayuIn.checksum( *checksum_payload_items )
+            checksum = PayuIn.checksum(self.account, self.credential2, *checksum_payload_items )
             add_field( mappings[:checksum], checksum )
             return checksum_payload_items
           end
